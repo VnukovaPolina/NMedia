@@ -55,7 +55,7 @@
         android:contentDescription="@string/description_post_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_more_vert_24" />
+        tools:srcCompat="@drawable/baseline_more_vert_24" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -93,7 +93,7 @@
         android:layout_marginTop="@dimen/standart_padding"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:srcCompat="@drawable/baseline_favorite_border_24" />
+        tools:srcCompat="@drawable/baseline_favorite_border_24" />
 
     <TextView
         android:id="@+id/likes_count"
@@ -103,7 +103,7 @@
         android:layout_marginStart="@dimen/margin_from_icons"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         app:layout_constraintStart_toEndOf="@id/likes_button"
-        android:text="@string/count876" />
+        tools:text="@string/count876" />
 
     <ImageView
         android:id="@+id/shares_icon"
@@ -113,7 +113,7 @@
         app:layout_constraintStart_toEndOf="@id/likes_count"
         android:layout_marginTop="@dimen/standart_padding"
         android:layout_marginStart="@dimen/margin_from_likes"
-        app:srcCompat="@drawable/baseline_share_24" />
+        tools:srcCompat="@drawable/baseline_share_24" />
 
     <TextView
         android:id="@+id/shares_count"
@@ -123,13 +123,13 @@
         android:layout_marginTop="@dimen/standart_padding"
         android:layout_marginStart="@dimen/margin_from_icons"
         app:layout_constraintStart_toEndOf="@id/shares_icon"
-        android:text="@string/count200" />
+        tools:text="@string/count200" />
 
     <ImageView
         android:id="@+id/views_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/eyeIcon_24"
+        tools:srcCompat="@drawable/eye_icon_24"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         android:layout_marginTop="@dimen/standart_padding"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         android:layout_marginTop="@dimen/standart_padding"
-        android:text="@string/count100K"
+        tools:text="@string/count100K"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="@dimen/standart_padding"/>
 
