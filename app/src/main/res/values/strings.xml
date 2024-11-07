@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="NMedia">NMedia!</string>
+    <string name="author">Нетология. Университет интернет-профессий будущего.</string>
+    <string name="avatar_description">Аватар онлайн-университета Нетология</string>
+    <string name="description_post_menu">Post menu</string>
+    <string name="count10">10</string>
+    <string name="count200">200</string>
+    <string name="count1K">1K</string>
+    <string name="count100K">100K</string>
+    <string name="count876">876</string>
 </resources>
