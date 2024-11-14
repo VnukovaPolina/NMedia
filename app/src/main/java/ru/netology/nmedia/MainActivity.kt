@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         with(binding) {
+            avatar.setImageResource(R.drawable.netology)
             author.text = post.author
             published.text = post.published
             content.text = post.content
