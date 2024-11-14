@@ -3,6 +3,6 @@
     <dimen name="avatar_dimension">48dp</dimen>
     <dimen name="standart_padding">16dp</dimen>
     <dimen name="margin_from_icons">8dp</dimen>
-    <dimen name="margin_from_likes">24dp</dimen>
+    <dimen name="margin_from_likes">56dp</dimen>
     <dimen name="margin_from_parentEnd">60dp</dimen>
 </resources>
