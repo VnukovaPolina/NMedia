@@ -23,11 +23,13 @@ class MainActivity : AppCompatActivity() {
             published = "21 мая в 18:55"
         )
 
+
         with(binding) {
             avatar.setImageResource(R.drawable.netology)
             author.text = post.author
             published.text = post.published
             content.text = post.content
+            menu.setImageResource(R.drawable.baseline_more_vert_24)
             if (post.likedByMe) {
                 likesButton.setImageResource(R.drawable.favorited_24)
             } else {
@@ -45,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             sharesIcon.setImageResource(R.drawable.baseline_share_24)
-            sharesCount.text = post.shares.toString()
+            sharesCount.text = receiveStringFromNumber(post.shares)
             sharesIcon.setOnClickListener {
                 post.shares++
                 sharesCount.text = receiveStringFromNumber(post.shares)
