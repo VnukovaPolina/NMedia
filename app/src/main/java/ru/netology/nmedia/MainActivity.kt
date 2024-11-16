@@ -3,11 +3,14 @@ package ru.netology.nmedia
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,45 +19,37 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 1,
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-            author = "Нетология. Университет интернет-профессий будущего",
-            published = "21 мая в 18:55"
-        )
+        val viewModel by viewModels<PostViewModel>()
 
-
-        with(binding) {
-            avatar.setImageResource(R.drawable.netology)
-            author.text = post.author
-            published.text = post.published
-            content.text = post.content
-            menu.setImageResource(R.drawable.baseline_more_vert_24)
-            if (post.likedByMe) {
-                likesButton.setImageResource(R.drawable.favorited_24)
-            } else {
-                likesButton.setImageResource(R.drawable.baseline_favorite_border_24)
-            }
-            likesCount.text = receiveStringFromNumber(post.likes)
-
-            likesButton.setOnClickListener {
-                post.likedByMe = !post.likedByMe
-                likesButton.setImageResource(
-                    if (post.likedByMe) R.drawable.favorited_24 else R.drawable.baseline_favorite_border_24
-                )
-                if (post.likedByMe) post.likes++ else post.likes--
+        viewModel.post.observe(this) {
+            post ->
+            with(binding) {
+                avatar.setImageResource(R.drawable.netology)
+                author.text = post.author
+                published.text = post.published
+                content.text = post.content
+                menu.setImageResource(R.drawable.baseline_more_vert_24)
+                if (post.likedByMe) {
+                    likesButton.setImageResource(R.drawable.favorited_24)
+                } else {
+                    likesButton.setImageResource(R.drawable.baseline_favorite_border_24)
+                }
                 likesCount.text = receiveStringFromNumber(post.likes)
-            }
 
-            sharesIcon.setImageResource(R.drawable.baseline_share_24)
-            sharesCount.text = receiveStringFromNumber(post.shares)
-            sharesIcon.setOnClickListener {
-                post.shares++
+                sharesButton.setImageResource(R.drawable.baseline_share_24)
                 sharesCount.text = receiveStringFromNumber(post.shares)
-            }
 
-            viewsIcon.setImageResource(R.drawable.eye_icon_24)
-            viewsCount.text = receiveStringFromNumber(post.views)
+                viewsIcon.setImageResource(R.drawable.eye_icon_24)
+                viewsCount.text = receiveStringFromNumber(post.views)
+            }
+        }
+
+        binding.likesButton.setOnClickListener {
+            viewModel.like()
+        }
+
+        binding.sharesButton.setOnClickListener {
+            viewModel.share()
         }
     }
 }

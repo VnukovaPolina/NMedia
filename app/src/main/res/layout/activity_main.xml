@@ -107,7 +107,7 @@
         tools:text="@string/count876" />
 
     <ImageView
-        android:id="@+id/shares_icon"
+        android:id="@+id/shares_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/barrier2"
@@ -123,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@id/barrier2"
         android:layout_marginTop="@dimen/standart_padding"
         android:layout_marginStart="@dimen/margin_from_icons"
-        app:layout_constraintStart_toEndOf="@id/shares_icon"
+        app:layout_constraintStart_toEndOf="@id/shares_button"
         tools:text="@string/count200" />
 
     <ImageView
