@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
+import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
@@ -15,41 +16,19 @@ import ru.netology.nmedia.viewmodel.PostViewModel
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel by viewModels<PostViewModel>()
-
-        viewModel.post.observe(this) {
-            post ->
-            with(binding) {
-                avatar.setImageResource(R.drawable.netology)
-                author.text = post.author
-                published.text = post.published
-                content.text = post.content
-                menu.setImageResource(R.drawable.baseline_more_vert_24)
-                if (post.likedByMe) {
-                    likesButton.setImageResource(R.drawable.favorited_24)
-                } else {
-                    likesButton.setImageResource(R.drawable.baseline_favorite_border_24)
-                }
-                likesCount.text = receiveStringFromNumber(post.likes)
-
-                sharesButton.setImageResource(R.drawable.baseline_share_24)
-                sharesCount.text = receiveStringFromNumber(post.shares)
-
-                viewsIcon.setImageResource(R.drawable.eye_icon_24)
-                viewsCount.text = receiveStringFromNumber(post.views)
-            }
+        val viewModel: PostViewModel by viewModels()
+        val adapter = PostsAdapter({
+            viewModel.likeById(it.id)
+        }, {
+            viewModel.shareById(it.id)
         }
-
-        binding.likesButton.setOnClickListener {
-            viewModel.like()
-        }
-
-        binding.sharesButton.setOnClickListener {
-            viewModel.share()
+        )
+        binding.list.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
         }
     }
 }

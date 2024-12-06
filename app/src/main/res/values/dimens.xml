@@ -4,5 +4,5 @@
     <dimen name="standart_padding">16dp</dimen>
     <dimen name="margin_from_icons">8dp</dimen>
     <dimen name="margin_from_likes">56dp</dimen>
-    <dimen name="margin_from_parentEnd">60dp</dimen>
+    <dimen name="margin_from_parentEnd">65dp</dimen>
 </resources>
