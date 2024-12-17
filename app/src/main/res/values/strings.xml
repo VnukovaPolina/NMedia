@@ -9,4 +9,10 @@
     <string name="count100K" translatable="false">100K</string>
     <string name="count876" translatable="false">876</string>
     <string name="author">Netology. University of Internet-professions of the Future.</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_save">Save</string>
+    <string name="description_post_save">Save</string>
+    <string name="empty_content">Content can\'t be empty</string>
+    <string name="post_text">Type text:</string>
 </resources>

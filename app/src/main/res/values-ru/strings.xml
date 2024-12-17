@@ -5,4 +5,10 @@
     <string name="author">Нетология. Университет интернет-профессий будущего.</string>
     <string name="avatar_description">Аватар Нетологии</string>
     <string name="description_post_menu">Меню</string>
+    <string name="menu_delete">Удалить</string>
+    <string name="menu_edit">Редактировать</string>
+    <string name="menu_save">Сохранить</string>
+    <string name="description_post_save">Сохранить пост</string>
+    <string name="empty_content">Пост не может быть пустым</string>
+    <string name="post_text">Введите текст поста:</string>
 </resources>
