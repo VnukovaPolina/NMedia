@@ -8,8 +8,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/content"
         tools:listitem="@layout/post_card"
         />
@@ -45,5 +46,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/save_post_icon"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:constraint_referenced_ids="editPreview, editIcon, undoEdit, editPostText"
+        android:visibility="visible"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/editPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="undoEdit" />
+
+    <ImageView
+        android:id="@+id/editIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/edit_preview"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/editPreview"
+        />
+
+    <TextView
+        android:id="@+id/editPostText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="@string/edit_post"
+        android:textColor="@color/blue_for_edit"
+        app:layout_constraintStart_toEndOf="@id/editIcon"
+        app:layout_constraintTop_toTopOf="@id/editPreview"
+        android:layout_marginTop="@dimen/standart_padding"
+        />
+
+    <ImageButton
+        android:id="@+id/undoEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:srcCompat="@drawable/close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/toolsTop"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

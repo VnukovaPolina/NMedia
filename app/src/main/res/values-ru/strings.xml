@@ -11,4 +11,5 @@
     <string name="description_post_save">Сохранить пост</string>
     <string name="empty_content">Пост не может быть пустым</string>
     <string name="post_text">Введите текст поста:</string>
+    <string name="edit_post">Редактирование поста</string>
 </resources>
