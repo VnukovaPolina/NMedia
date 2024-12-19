@@ -43,46 +43,9 @@
         android:layout_marginTop="@dimen/standart_padding"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_save"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/undoEdit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/save_post_icon"
-        />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:constraint_referenced_ids="editPreview, editIcon, undoEdit, editPostText"
-        android:visibility="visible"
-        />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/editPreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="undoEdit" />
-
-    <ImageView
-        android:id="@+id/editIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/edit_preview"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/editPreview"
-        />
-
-    <TextView
-        android:id="@+id/editPostText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:text="@string/edit_post"
-        android:textColor="@color/blue_for_edit"
-        app:layout_constraintStart_toEndOf="@id/editIcon"
-        app:layout_constraintTop_toTopOf="@id/editPreview"
-        android:layout_marginTop="@dimen/standart_padding"
+        app:srcCompat="@drawable/save_icon"
         />
 
     <ImageButton
@@ -92,6 +55,6 @@
         android:background="@color/white"
         app:srcCompat="@drawable/close"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/toolsTop"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

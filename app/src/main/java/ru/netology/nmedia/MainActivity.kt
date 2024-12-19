@@ -69,6 +69,12 @@ class MainActivity : AppCompatActivity() {
             binding.content.setText("")
             binding.content.clearFocus()
         }
+
+        binding.undoEdit.setOnClickListener {
+            viewModel.undoEdit()
+            binding.content.setText("")
+            binding.content.clearFocus()
+        }
     }
 }
 

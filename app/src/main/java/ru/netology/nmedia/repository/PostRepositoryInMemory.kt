@@ -96,7 +96,7 @@ class PostRepositoryInMemory : PostRepository {
             likes  = 1099,
             shares = 561,
             views = 100_345
-        ),
+        )
     )
 
     private val data = MutableLiveData(posts)
