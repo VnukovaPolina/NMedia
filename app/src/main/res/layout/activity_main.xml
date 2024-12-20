@@ -43,18 +43,51 @@
         android:layout_marginTop="@dimen/standart_padding"
         android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_save"
-        app:layout_constraintEnd_toStartOf="@id/undoEdit"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/save_icon"
         />
 
-    <ImageButton
-        android:id="@+id/undoEdit"
-        android:layout_width="wrap_content"
+
+
+    <RelativeLayout
+        android:id="@+id/editingModePanel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/toolsTop"
         android:background="@color/white"
-        app:srcCompat="@drawable/close"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/editPreviewIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/edit_preview"
+            android:layout_marginStart="@dimen/standart_padding"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
         />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/editingModeDescription"
+            android:textSize="16sp"
+            android:textColor="@color/blue_for_edit"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="72dp"
+            />
+
+        <ImageButton
+            android:id="@+id/undoEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/close"
+        />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

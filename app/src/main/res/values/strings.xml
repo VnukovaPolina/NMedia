@@ -16,4 +16,5 @@
     <string name="empty_content">Content can\'t be empty</string>
     <string name="post_text">Type text:</string>
     <string name="edit_post">Edit post</string>
+    <string name="editingModeDescription">Editing mode</string>
 </resources>

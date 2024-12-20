@@ -12,4 +12,5 @@
     <string name="empty_content">Пост не может быть пустым</string>
     <string name="post_text">Введите текст поста:</string>
     <string name="edit_post">Редактирование поста</string>
+    <string name="editingModeDescription">Режим редактирования поста</string>
 </resources>

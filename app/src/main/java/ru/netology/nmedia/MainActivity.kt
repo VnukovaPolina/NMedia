@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 return@observe
             }
             with(binding.content) {
+                binding.editingModePanel.visibility = View.VISIBLE
                 requestFocus()
                 setText(post.content)
             }
@@ -68,10 +70,14 @@ class MainActivity : AppCompatActivity() {
 
             binding.content.setText("")
             binding.content.clearFocus()
+            if (binding.editingModePanel.visibility == View.VISIBLE) {
+                binding.editingModePanel.visibility = View.GONE
+            }
         }
 
         binding.undoEdit.setOnClickListener {
             viewModel.undoEdit()
+            binding.editingModePanel.visibility = View.GONE
             binding.content.setText("")
             binding.content.clearFocus()
         }
