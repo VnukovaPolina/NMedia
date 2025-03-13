@@ -39,7 +39,6 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
-            menu.setImageResource(R.drawable.baseline_more_vert_24)
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.menu_resource_file)
@@ -65,17 +64,16 @@ class PostViewHolder(
             published.text = post.published
             content.text = post.content
 
-            likesButton.setImageResource(
-                if (post.likedByMe) R.drawable.favorited_24 else R.drawable.baseline_favorite_border_24
-            )
-            likesCount.text = receiveStringFromNumber(post.likes)
+//            likesButton.setImageResource(
+//                if (post.likedByMe) R.drawable.favorited_24 else R.drawable.baseline_favorite_border_24
+//            )
+            likesButton.text = receiveStringFromNumber(post.likes)
             likesButton.setOnClickListener{
                 onInteractionListener.onLike(post)
             }
 
-            sharesButton.setImageResource(R.drawable.baseline_share_24)
             sharesButton.setOnClickListener { onInteractionListener.onShare(post) }
-            sharesCount.text = receiveStringFromNumber(post.shares)
+            sharesButton.text = receiveStringFromNumber(post.shares)
 
             viewsIcon.setImageResource(R.drawable.eye_icon_24)
             viewsCount.text = receiveStringFromNumber(post.views)
