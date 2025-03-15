@@ -17,4 +17,6 @@
     <string name="post_text">Type text:</string>
     <string name="edit_post">Edit post</string>
     <string name="editingModeDescription">Editing mode</string>
+    <string name="chooser_share_post">Share post text</string>
+    <string name="add_post">Add new post</string>
 </resources>

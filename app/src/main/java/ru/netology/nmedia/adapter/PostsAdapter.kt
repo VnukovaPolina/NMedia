@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostCardBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.receiveStringFromNumber
+
 
 interface OnInteractionListener {
     fun onLike(post: Post) {}
@@ -75,6 +75,26 @@ class PostViewHolder(
 
             viewsIcon.setImageResource(R.drawable.eye_icon_24)
             viewsCount.text = receiveStringFromNumber(post.views)
+        }
+    }
+
+    fun receiveStringFromNumber(num: Long): String {
+        when (num) {
+            in 0..999 -> return num.toString()
+            in 1_000..10_000 -> {
+                if (num % 1000 < 100) {
+                    return (num.toInt() / 1000).toString() + "K"
+                } else {
+                    return (num.toInt() / 1000).toString() + "." + ((num % 1000) / 100).toInt()
+                        .toString() + "K"
+                }
+            }
+
+            in 10_001..999_999 -> return (num / 1000).toInt().toString() + "K"
+            in 1_000_000..999_999_999 -> return (num / 1_000_000).toInt()
+                .toString() + "." + ((num % 1_000_000) / 100_000).toString() + "M"
+
+            else -> return ""
         }
     }
 }

@@ -13,4 +13,6 @@
     <string name="post_text">Введите текст поста:</string>
     <string name="edit_post">Редактирование поста</string>
     <string name="editingModeDescription">Режим редактирования поста</string>
+    <string name="chooser_share_post">Поделиться текстом поста</string>
+    <string name="add_post">Добавить пост</string>
 </resources>

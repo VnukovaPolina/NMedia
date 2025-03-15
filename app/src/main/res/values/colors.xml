@@ -5,4 +5,5 @@
     <color name="blue_for_edit">#04439B</color>
     <color name="like_tint" />
     <color name="red">#DD0F00</color>
+    <color name="add_background">#C4FCC6</color>
 </resources>

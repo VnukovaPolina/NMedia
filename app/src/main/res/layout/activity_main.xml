@@ -4,91 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MainActivity">
+    tools:context=".activity.MainActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/content"
         tools:listitem="@layout/post_card"
         />
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/toolsTop"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="content,save" />
-
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:hint="@string/post_text"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/standart_padding"
+        android:contentDescription="@string/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolsTop"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/standart_padding"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/save_icon"
-        />
+        android:layout_marginEnd="@dimen/standart_padding"
+        android:layout_marginBottom="@dimen/standart_padding"
+        android:backgroundTint="@color/add_background"
+        app:srcCompat="@drawable/baseline_add_circle_outline_24" />
 
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/editingModePanel"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/toolsTop"-->
+<!--        android:background="@color/white"-->
+<!--        android:visibility="gone"-->
+<!--        >-->
 
-    <RelativeLayout
-        android:id="@+id/editingModePanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/toolsTop"
-        android:background="@color/white"
-        android:visibility="gone"
-        >
+<!--        <ImageView-->
+<!--            android:id="@+id/editPreviewIcon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:srcCompat="@drawable/edit_preview"-->
+<!--            android:layout_marginStart="@dimen/standart_padding"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--        />-->
 
-        <ImageView
-            android:id="@+id/editPreviewIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/edit_preview"
-            android:layout_marginStart="@dimen/standart_padding"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-        />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/editingModeDescription"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/blue_for_edit"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="72dp"-->
+<!--            />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/editingModeDescription"
-            android:textSize="16sp"
-            android:textColor="@color/blue_for_edit"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="72dp"
-            />
-
-        <ImageButton
-            android:id="@+id/undoEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/close"
-        />
-    </RelativeLayout>
+<!--        <ImageButton-->
+<!--            android:id="@+id/undoEdit"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/white"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            app:srcCompat="@drawable/close"-->
+<!--        />-->
+<!--    </RelativeLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
