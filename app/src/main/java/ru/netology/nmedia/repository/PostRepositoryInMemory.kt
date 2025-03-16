@@ -126,13 +126,12 @@ class PostRepositoryInMemory : PostRepository {
         data.value = posts
     }
 
-    override fun save(post: Post, textContent: String) {
+    override fun save(post: Post) {
         if (post.id == 0L) {
             posts = listOf(
                 post.copy(
                     id = nextId++,
                     author = "Нетология. Университет интернет-профессий будущего",
-                    content = textContent,
                     published = "Только что",
                     likedByMe = false,
                     likes = 0,
@@ -146,7 +145,7 @@ class PostRepositoryInMemory : PostRepository {
         }
 
         posts = posts.map {
-            if (it.id != post.id) it else it.copy(content = textContent)
+            if (it.id != post.id) it else it.copy(content = post.content)
         }
         data.value = posts
     }
