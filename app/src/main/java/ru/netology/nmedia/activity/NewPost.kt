@@ -43,7 +43,9 @@ class NewPost : AppCompatActivity() {
 
 }
 
-object newPostContract : ActivityResultContract<Unit, String?>() {
-    override fun createIntent(context: Context, input: Unit) = Intent(context, NewPost::class.java)
+object newOrEditPostContract : ActivityResultContract<String?, String?>() {
+    override fun createIntent(context: Context, input: String?) = Intent(context, NewPost::class.java).apply {
+        putExtra(Intent.EXTRA_TEXT, input)
+    }
     override fun parseResult(resultCode: Int, intent: Intent?) = intent?.getStringExtra("updatedText")
 }

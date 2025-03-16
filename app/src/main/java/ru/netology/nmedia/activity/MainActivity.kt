@@ -1,7 +1,6 @@
 package ru.netology.nmedia.activity
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.R
@@ -11,20 +10,10 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 import android.content.Intent
-import android.os.Build
-import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
+import android.net.Uri
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
-
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val updatedText = result.data?.getStringExtra("updatedText")
-            val textView : TextView = findViewById(R.id.content)
-            textView.text = updatedText
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
 
-        val newPostLauncher = registerForActivityResult(newPostContract) { content ->
+        val newOrEditPostLauncher = registerForActivityResult(newOrEditPostContract) { content ->
             content ?: return@registerForActivityResult
             viewModel.changeContent(content)
-            viewModel.saveContent()
+            viewModel.save()
         }
 
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
-                val editIntent = Intent(this@MainActivity, NewPost::class.java)
-                editIntent.putExtra(Intent.EXTRA_TEXT, post.content)
-                startForResult.launch(editIntent)
-                viewModel.changeContent()
-                //viewModel.saveContent()
+                newOrEditPostLauncher.launch(post.content)
             }
 
             override fun onLike(post: Post) {
@@ -79,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.add.setOnClickListener {
-            newPostLauncher.launch(Unit)
+            newOrEditPostLauncher.launch("")
         }
 
     }

@@ -1,6 +1,5 @@
 package ru.netology.nmedia.viewmodel
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.dto.Post
@@ -20,7 +19,7 @@ class PostViewModel : ViewModel() {
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
 
-    fun saveContent() {
+    fun save() {
         edited.value?.let {
             repository.save(it)
         }

@@ -1,8 +1,16 @@
 package ru.netology.nmedia.adapter
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +45,7 @@ class PostViewHolder(
     private val binding: PostCardBinding,
     private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
+    @SuppressLint("QueryPermissionsNeeded")
     fun bind(post: Post) {
         binding.apply {
             menu.setOnClickListener {
@@ -63,6 +72,32 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
+
+            if (post.video != null) {
+                video.visibility = View.VISIBLE
+                video.setImageResource(R.drawable.metalfamily)
+                playButton.visibility = View.VISIBLE
+                val videoUri = Uri.parse(post.video)
+                video.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, videoUri)
+                    if (intent.resolveActivity(itemView.context.packageManager) != null) {
+                        itemView.context.startActivity(intent)
+                    } else {
+                        Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                playButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, videoUri)
+                    if (intent.resolveActivity(itemView.context.packageManager) != null) {
+                        itemView.context.startActivity(intent)
+                    } else {
+                        Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                video.visibility = View.GONE
+                playButton.visibility = View.GONE
+            }
 
             likesButton.text = receiveStringFromNumber(post.likes)
             likesButton.isChecked = post.likedByMe
