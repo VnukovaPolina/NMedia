@@ -10,6 +10,8 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,6 +51,17 @@ class MainActivity : AppCompatActivity() {
             override fun onRemove(post: Post) {
                 viewModel.deleteById(post.id)
             }
+
+            override fun onPlayVideo(post: Post) {
+                val  videoUri = Uri.parse(post.video)
+                val intent = Intent(Intent.ACTION_VIEW, videoUri)
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@MainActivity, "No such app", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         })
 
         binding.list.adapter = adapter

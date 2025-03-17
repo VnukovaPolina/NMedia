@@ -24,6 +24,7 @@ interface OnInteractionListener {
     fun onShare(post: Post) {}
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
+    fun onPlayVideo(post: Post) {}
 }
 
 
@@ -77,12 +78,11 @@ class PostViewHolder(
                 video.visibility = View.VISIBLE
                 video.setImageResource(R.drawable.metalfamily)
                 playButton.visibility = View.VISIBLE
-                val videoUri = Uri.parse(post.video)
                 video.setOnClickListener {
-                    sendVideo(videoUri)
+                    onInteractionListener.onPlayVideo(post)
                 }
                 playButton.setOnClickListener {
-                    sendVideo(videoUri)
+                    onInteractionListener.onPlayVideo(post)
                 }
             } else {
                 video.visibility = View.GONE
@@ -103,14 +103,6 @@ class PostViewHolder(
         }
     }
 
-    fun sendVideo(videoUri: Uri) {
-        val intent = Intent(Intent.ACTION_VIEW, videoUri)
-        if (intent.resolveActivity(itemView.context.packageManager) != null) {
-            itemView.context.startActivity(intent)
-        } else {
-            Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     fun receiveStringFromNumber(num: Long): String {
         when (num) {
