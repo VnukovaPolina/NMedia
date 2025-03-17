@@ -10,8 +10,6 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 import android.content.Intent
-import android.net.Uri
-import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
+                viewModel.edit(post)
                 newOrEditPostLauncher.launch(post.content)
             }
 

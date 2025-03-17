@@ -79,20 +79,10 @@ class PostViewHolder(
                 playButton.visibility = View.VISIBLE
                 val videoUri = Uri.parse(post.video)
                 video.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, videoUri)
-                    if (intent.resolveActivity(itemView.context.packageManager) != null) {
-                        itemView.context.startActivity(intent)
-                    } else {
-                        Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
-                    }
+                    sendVideo(videoUri)
                 }
                 playButton.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_VIEW, videoUri)
-                    if (intent.resolveActivity(itemView.context.packageManager) != null) {
-                        itemView.context.startActivity(intent)
-                    } else {
-                        Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
-                    }
+                    sendVideo(videoUri)
                 }
             } else {
                 video.visibility = View.GONE
@@ -110,6 +100,15 @@ class PostViewHolder(
 
             viewsIcon.setImageResource(R.drawable.eye_icon_24)
             viewsCount.text = receiveStringFromNumber(post.views)
+        }
+    }
+
+    fun sendVideo(videoUri: Uri) {
+        val intent = Intent(Intent.ACTION_VIEW, videoUri)
+        if (intent.resolveActivity(itemView.context.packageManager) != null) {
+            itemView.context.startActivity(intent)
+        } else {
+            Toast.makeText(itemView.context, "No such app", Toast.LENGTH_SHORT).show()
         }
     }
 
