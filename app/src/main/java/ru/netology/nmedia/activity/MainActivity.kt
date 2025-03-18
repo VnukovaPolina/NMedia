@@ -23,7 +23,10 @@ class MainActivity : AppCompatActivity() {
         val viewModel: PostViewModel by viewModels()
 
         val newOrEditPostLauncher = registerForActivityResult(newOrEditPostContract) { content ->
-            content ?: return@registerForActivityResult
+            if (content == null) {
+                viewModel.undoEdit()
+                return@registerForActivityResult
+            }
             viewModel.changeContent(content)
             viewModel.save()
         }
