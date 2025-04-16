@@ -19,4 +19,6 @@
     <string name="editingModeDescription">Editing mode</string>
     <string name="chooser_share_post">Share post text</string>
     <string name="add_post">Add new post</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
