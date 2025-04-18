@@ -5,4 +5,5 @@
     <dimen name="margin_from_icons">8dp</dimen>
     <dimen name="margin_from_likes">56dp</dimen>
     <dimen name="margin_from_parentEnd">65dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
